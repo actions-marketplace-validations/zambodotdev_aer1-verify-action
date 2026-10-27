@@ -1,0 +1,15 @@
+name: verify receipts
+on: pull_request
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: zambodotdev/aer1-verify-action@v1
+        with:
+          include-comments: "true"
+          # paths: "docs/**/*.md, receipts/*.json"
+          # require-receipts: "true"
