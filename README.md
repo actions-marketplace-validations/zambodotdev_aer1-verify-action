@@ -9,6 +9,7 @@ on: pull_request
 permissions:
   contents: read
   pull-requests: read
+  issues: read
 jobs:
   verify:
     runs-on: ubuntu-latest
