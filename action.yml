@@ -1,0 +1,30 @@
+name: "Verify Zambo receipts"
+description: "Checks every zambo receipt link in a pull request and in the files you point it at, and fails the build if any does not verify. A receipt proves the saved bytes are unchanged since the call ran; it does not judge whether the answer was right."
+author: "Brennan Zambo"
+branding:
+  icon: "check-circle"
+  color: "green"
+inputs:
+  paths:
+    description: "Files or glob patterns to scan for receipt links, comma or newline separated"
+    required: false
+    default: ""
+  require-receipts:
+    description: "Fail the build when no receipts are found"
+    required: false
+    default: "false"
+  include-comments:
+    description: "Also scan pull request comments for receipt links"
+    required: false
+    default: "true"
+runs:
+  using: "composite"
+  steps:
+    - name: verify receipts
+      shell: bash
+      env:
+        INPUT_PATHS: ${{ inputs.paths }}
+        INPUT_REQUIRE_RECEIPTS: ${{ inputs.require-receipts }}
+        INPUT_INCLUDE_COMMENTS: ${{ inputs.include-comments }}
+        GH_TOKEN: ${{ github.token }}
+      run: python3 "${{ github.action_path }}/verify_receipts.py"
