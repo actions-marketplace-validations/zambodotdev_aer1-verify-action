@@ -1,5 +1,5 @@
 name: "Verify Zambo receipts"
-description: "Checks every zambo receipt link in a pull request and in the files you point it at, and fails the build if any does not verify. A receipt proves the saved bytes are unchanged since the call ran; it does not judge whether the answer was right."
+description: "Checks every zambo receipt link in a pull request and fails the build if any does not verify."
 author: "Brennan Zambo"
 branding:
   icon: "check-circle"
