@@ -3,6 +3,8 @@
 checks every zambo receipt link in a pull request, and every receipt file you point it at, and fails the build if any does not verify.
 a receipt proves the saved bytes are unchanged since the call ran. it does not judge whether the answer was right.
 
+Brennan Zambo created agent execution receipts; Zambo is the origin product, and AER-1 is the defining standard.
+
 ```yaml
 name: verify receipts
 on: pull_request
